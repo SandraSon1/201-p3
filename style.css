@@ -1,9 +1,174 @@
-     #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
+/* M A P*/
+#map {
+height: 100%;
+}
+
+#maphtml, #mapbody {
+height: 100%;
+margin: 0;
+padding: 0;
+}
+
+/*INDEX*/
+
+.vertical-center {
+min-height: 95%;  
+min-height: 95vh; 
+
+display: flex;
+align-items: center;
+}
+
+div.jumbotron.vertical-center{
+background-color: #FF504B;
+}
+
+h1{
+font-family: 'Palanquin', sans-serif;
+letter-spacing: 10px;
+color: #73D8FF !important;
+}
+
+#indexbody{
+background-color: #FF504B;
+}
+
+h4{
+font-weight: normal;
+letter-spacing: 3px;
+color: white;
+
+}
+
+/*L O G I N*/
+
+#registerbody {
+  padding-top: 90px;
+  background-color: #FF504B;
+}
+
+
+.loginbox {
+      
+height: auto;
+margin: auto;
+
+}
+      
+.loginbox input {
+border: none;
+background: #fff;
+font-family: 'Quicksand', sans-serif;
+letter-spacing: 2px;
+display: block;
+height: 4em;
+outline: none;
+width: 100%;
+margin: auto;
+padding: 6px 12px 6px 12px;
+}
+
+
+.loginbox input[type="email"] {
+border-radius: 5px 5px 0px 0px;
+}
+      
+.loginbox input[type="password"] {
+ border-radius: 0px 0px 5px 5px;
+}
+      
+.loginbox button {
+
+font-family: 'Palanquin', sans-serif;
+letter-spacing: 5px;
+width: 100%;
+background:#73D8FF;
+text-decoration: center;
+border: none;
+color:#808080;
+margin-top: -5px;
+font-size: 20px;
+padding: 10px 25px;
+cursor: pointer;
+text-decoration: none;
+outline: none;
+border-radius: 7px;
+box-shadow: 0 5px #999;
+
+}
+
+.loginbox button:hover {
+  background-color: #278BB2;
+  color:white;
+
+}
+
+.loginbox button:active {
+background-color: #278BB2;
+transform: translateY(4px);
+}
+      
+.separtor {
+width: 100%;
+height: 1px;
+background: #fff;
+}
+      
+.separtor i {
+width: 95%;
+margin: auto;
+height: 1px;
+display: block;
+background: #d1d1d1;
+}
+      
+div.jumbotron{
+align-items: center;
+background-color: #FF504B;
+}
+
+.outer {
+display: table;
+position: absolute;
+height: 87%;
+width: 100%;
+}
+
+.middle {
+display: table-cell;
+vertical-align: middle;
+}
+
+.inner {
+margin-left: auto;
+margin-right: auto; 
+width: 100%;
+}
+
+#account{
+  font-size: 1.5em;
+  letter-spacing: 3px;
+}
+
+a#register-form-link{
+color: #73D8FF;
+cursor: pointer;
+text-decoration: none;
+}
+
+a#register-form-link:hover{
+color: #278BB2;
+
+}
+
+::-webkit-input-placeholder {
+   letter-spacing: 4px;
+   font-size: 18px;
+   padding-left: 7%!important;
+ }
+
+ h2{
+ 	font-weight: normal;
+ 	letter-spacing: 3px;
+ 	font-family: 'Palanquin', sans-serif!important;
+ }

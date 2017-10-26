@@ -1,11 +1,14 @@
+var userPos;
+
+
 
 // Firebse setup
-  var config = {
+      var config = {
       apiKey: "AIzaSyD1FWLNeV1Z_eX-0DzCbpPcIg7jTUgbnHE",
       authDomain: "nameme-bab93.firebaseapp.com",
       databaseURL: "https://nameme-bab93.firebaseio.com",
       projectId: "nameme-bab93",
-      storageBucket: "",
+      storageBucket: "nameme-bab93.appspot.com",
       messagingSenderId: "388977165924"
     };
     firebase.initializeApp(config);
@@ -18,28 +21,35 @@
      ref.on('value', gotData, errData);
    
 
+         function gotData(data){
+          console.log('data object', data.val());
+          var users = data.val();
+          var keys = Object.keys(users)
+          console.log(keys);
+          for (var i = 0; i < keys.length; i ++){
+            var k = keys[i];
 
-   function gotData(data){
-    console.log('data object', data.val());
-    var users = data.val();
-    var keys = Object.keys(users)
-    console.log(keys);
-    for (var i = 0; i < keys.length; i ++){
-      var k = keys[i];
-      console.log(users[k].name);
-      console.log(users[k].pos.lat);
-      console.log(users[k].pos.lng);
-      // var name = users[k].name;
-      // var pos= users[k].score;
-      // console.log(name, pos.lat);
-    }
-   }
+            var name = users[k].name;
+            var pos= users[k].pos;
+
+            userPos= {lat: pos.lat, lng: pos.lng};
 
 
-   function errData(err){
-    console.log('Error!');
-    console.log(err);
-   }
+            console.log(users[k].name);
+            console.log(users[k].pos.lat);
+            console.log(users[k].pos.lng);
+            console.log(userPos);
+            // var name = users[k].name;
+            // console.log(name, pos.lat);
+           
+
+          }
+         }
+
+         function errData(err){
+          console.log('Error!');
+          console.log(err);
+         }
 
 
 // Google maps setup
@@ -61,13 +71,19 @@
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-        // console.log('pos', pos);
+        console.log('pos', pos);
 
         var data =  {
             name:"Someone's name",
             pos : pos
          }
         ref.push(data);
+
+        var userMarker = new google.maps.Marker({
+          position: userPos,
+          map: map
+        });
+
 
         infoWindow.setPosition(pos);
         infoWindow.setContent('location found');
@@ -87,15 +103,7 @@
     infoWindow.setContent(browserHasGeolocation ?
                           'Error: The Geolocation service failed.' :
                           'Error: Your browser doesn\'t support geolocation.');
-    infoWindow.open(map, marker);
+    infoWindow.open(map);
   }
-
-
-    
-
-
-
-     
-
 
 
