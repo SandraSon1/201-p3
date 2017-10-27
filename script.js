@@ -42,7 +42,12 @@ var userPos;
             console.log(userPos);
             // var name = users[k].name;
             // console.log(name, pos.lat);
-           
+           var userMarker = new google.maps.Marker({
+          position: userPos,
+          map: map
+
+          
+        });
 
           }
          }
@@ -284,10 +289,12 @@ var userPos;
          }
         ref.push(data);
 
-        var userMarker = new google.maps.Marker({
-          position: userPos,
-          map: map
-        });
+        // var userMarker = new google.maps.Marker({
+        //   position: userPos,
+        //   map: map
+
+          
+        // });
 
 
         infoWindow.setPosition(pos);
