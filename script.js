@@ -30,10 +30,10 @@ var userPos;
           for (var i = 0; i < keys.length; i ++){
             var k = keys[i];
 
-            var name = users[k].name;
-            var pos= users[k].pos;
+          var name = users[k].name;
+          var pos= users[k].pos;
 
-            userPos= {lat: pos.lat, lng: pos.lng};
+          userPos= {lat: pos.lat, lng: pos.lng};
 
 
             console.log(users[k].name);
@@ -42,12 +42,38 @@ var userPos;
             console.log(userPos);
             // var name = users[k].name;
             // console.log(name, pos.lat);
-           var userMarker = new google.maps.Marker({
-          position: userPos,
-          map: map
+
+
+        var infowindow = new google.maps.InfoWindow;
 
           
+        var image = {
+        url: 'img/marker.png', 
+        scaledSize: new google.maps.Size(30, 50), 
+    
+        };
+
+
+        var userMarker = new google.maps.Marker({
+        map: map,
+        draggable: true,
+        animation: google.maps.Animation.DROP,
+        icon: image,
+        position: userPos
+      });
+
+      userMarker.addListener('click', function() {
+      infowindow.open(map, this);
+      });
+
+    
+        google.maps.event.addListener(userMarker, 'click', function() {
+        map.panTo(this.getPosition());
+        map.setZoom(11);
         });
+
+  
+
 
           }
          }
@@ -64,7 +90,8 @@ var userPos;
     function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
        
-      zoom: 12,
+      zoom: 6,
+      center: userPos,
       styles:[
   {
     "elementType": "geometry",
@@ -86,7 +113,7 @@ var userPos;
     "elementType": "labels.text.fill",
     "stylers": [
       {
-        "color": "#757575"
+        "color": "#ff8000"
       }
     ]
   },
@@ -112,7 +139,7 @@ var userPos;
     "elementType": "labels.text.fill",
     "stylers": [
       {
-        "color": "#9e9e9e"
+        "color": "#ffffff"
       }
     ]
   },
@@ -129,16 +156,7 @@ var userPos;
     "elementType": "labels.text.fill",
     "stylers": [
       {
-        "color": "#bdbdbd"
-      }
-    ]
-  },
-  {
-    "featureType": "landscape.man_made",
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#ffeb3b"
+        "color": "#ffcc66"
       }
     ]
   },
@@ -252,15 +270,6 @@ var userPos;
   },
   {
     "featureType": "water",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#000000"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
     "elementType": "labels.text.fill",
     "stylers": [
       {
@@ -270,6 +279,8 @@ var userPos;
   }
 ]
     });
+
+
     infoWindow = new google.maps.InfoWindow;
 
    
@@ -281,7 +292,7 @@ var userPos;
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-        console.log('pos', pos);
+        // console.log('pos', pos);
 
         var data =  {
             name:"Someone's name",
@@ -289,21 +300,18 @@ var userPos;
          }
         ref.push(data);
 
-        // var userMarker = new google.maps.Marker({
-        //   position: userPos,
-        //   map: map
-
-          
-        // });
+       
 
 
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('location found');
-        infoWindow.open(map);
+        // infoWindow.setPosition(pos);
+        // infoWindow.setContent('location found');
+        // infoWindow.open(map);
+        // userMarker;
         map.setCenter(pos);
       }, function() {
         handleLocationError(true, infoWindow, map.getCenter());
       });
+      
     } else {
       // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, map.getCenter());
@@ -311,8 +319,7 @@ var userPos;
   }
 
   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
+   alert(browserHasGeolocation ?
                           'Error: The Geolocation service failed.' :
                           'Error: Your browser doesn\'t support geolocation.');
     infoWindow.open(map);
