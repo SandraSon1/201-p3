@@ -71,11 +71,11 @@ btnLogout.addEventListener('click', e=>{
 firebase.auth().onAuthStateChanged(firebaseUser =>{
 	if(firebaseUser){
 		console.log(firebaseUser);
-		btnLogout.classList.remove('hide');
-		// window.
+		// btnLogout.classList.remove('hide');
+		window.location= 'location.html'
 	}else{
 		console.log('not logged in')
-		btnLogout.classList.add('hide');
+		// btnLogout.classList.add('hide');
 	}
 });
 

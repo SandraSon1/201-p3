@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html id ="indexhtml">
+
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sight</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Palanquin:300" rel="stylesheet">
+</head>
+
+<script>  
+
+	var config = {
+      apiKey: "AIzaSyD1FWLNeV1Z_eX-0DzCbpPcIg7jTUgbnHE",
+      authDomain: "nameme-bab93.firebaseapp.com",
+      databaseURL: "https://nameme-bab93.firebaseio.com",
+      projectId: "nameme-bab93",
+      storageBucket: "nameme-bab93.appspot.com",
+      messagingSenderId: "388977165924"
+    };
+    
+    firebase.initializeApp(config);
+
+	</script>
+
+
+<body id = "locationbody">
+
+<script>
+window.onload=function(){
+const btnLogout = document.getElementById('btnLogout');
+
+btnLogout.addEventListener('click', e=>{
+	firebase.auth().signOut();
+
+});
+
+
+firebase.auth().onAuthStateChanged(firebaseUser =>{
+	if(firebaseUser){
+		console.log(firebaseUser);
+		// btnLogout.classList.remove('hide');
+		// window.location = 'profile.html';
+	}else{
+		console.log('not logged in')
+		// btnLogout.classList.add('hide');
+		window.location= 'register.html'
+	}
+});
+}
+</script>
+
+
+                     
+<button id="btnLogout" class="btn btn-action">Log out </button> 
+
+
+ <div class="jumbotron vertical-center" id= namejum>
+<div class="container">
+	<div class="row">
+    
+        <div class="input-group input-group-lg">
+            <input type="text" class="form-control" placeholder="First Name &emsp;&emsp; Last Name">
+            <div class="input-group-btn">
+                   <a class="btn btn-default" href="map.html">Submit</a>
+              
+            </div>
+        </div>
+        
+	</div>
+</div>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

@@ -29,25 +29,26 @@ padding: 0;
 /*INDEX*/
 
 .vertical-center {
-min-height: 95%;  
-min-height: 95vh; 
+min-height: 89%;  
+min-height: 89vh; 
 
 display: flex;
 align-items: center;
 }
 
 div.jumbotron.vertical-center{
-background-color: #FF504B;
+/*background-color: #FF504B;*/
+background-color: #002C57;
 }
 
 h1{
 font-family: 'Palanquin', sans-serif;
 letter-spacing: 10px;
-color: #73D8FF !important;
+color: #FFBC4C !important;
 }
 
 #indexbody{
-background-color: #FF504B;
+background-color: #002C57;
 }
 
 h4{
@@ -57,12 +58,20 @@ color: white;
 
 }
 
+h2{
+  font-family: 'Palanquin', sans-serif!important;
+letter-spacing: 15px!important;
+color: #FFBC4C !important;
+font-size: 40px;
+}
+
 /*L O G I N*/
 
 #registerbody {
   padding-top: 90px;
-  background-color: #FF504B;
+  background-color: #002C57;
 }
+
 
 
 .loginbox {
@@ -99,10 +108,10 @@ border-radius: 5px 5px 0px 0px;
 font-family: 'Palanquin', sans-serif;
 letter-spacing: 5px;
 width: 100%;
-background:#73D8FF;
+/*background:#73D8FF;*/
 text-decoration: center;
 border: none;
-color:#808080;
+background-color:#4CC0FF;
 margin-top: -5px;
 font-size: 20px;
 padding: 10px 25px;
@@ -115,13 +124,13 @@ border-radius: 7px;
 }
 
 .loginbox button:hover {
-  background-color: #278BB2;
+  background-color: #FFBC4C;
   color:white;
 
 }
 
 .loginbox button:active {
-background-color: #278BB2;
+background-color: #FFBC4C;
 transform: translateY(4px);
 }
       
@@ -141,7 +150,7 @@ background: #d1d1d1;
       
 div.jumbotron{
 align-items: center;
-background-color: #FF504B;
+background-color: #002C57;
 }
 
 .outer {
@@ -189,3 +198,42 @@ color: #278BB2;
  	letter-spacing: 3px;
  	font-family: 'Palanquin', sans-serif!important;
  }
+
+/* P R O F I L E*/
+#locationbody {
+ 
+  background-color: #002C57;
+}
+
+#btnLogout{
+    margin-left: 10px;
+  margin-top: 10px;
+   background-color: #FFBC4C;
+   font-family: 'Palanquin', sans-serif;
+letter-spacing: 5px;
+
+
+
+}
+
+div#namejum.jumbotron{
+  align-items: center;
+}
+
+#name{
+  border: none;
+background: #fff;
+font-family: 'Quicksand', sans-serif;
+letter-spacing: 2px;
+display: block;
+height: 4em;
+outline: none;
+width: 100%;
+margin: auto;
+padding: 6px 12px 6px 12px;
+border-radius: 5px 5px 5px 5px;
+}
+
+
+
+ 

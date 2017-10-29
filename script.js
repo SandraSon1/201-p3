@@ -44,7 +44,7 @@ var userPos;
             // console.log(name, pos.lat);
 
 
-        var infowindow = new google.maps.InfoWindow;
+        // var infowindow = new google.maps.InfoWindow;
 
           
         var image = {
@@ -52,7 +52,6 @@ var userPos;
         scaledSize: new google.maps.Size(30, 50), 
     
         };
-
 
         var userMarker = new google.maps.Marker({
         map: map,
@@ -62,14 +61,40 @@ var userPos;
         position: userPos
       });
 
-      userMarker.addListener('click', function() {
-      infowindow.open(map, this);
-      });
+      // userMarker.addListener('click', function() {
+      // infowindow.open(map, this);
+      // });
+
+var boxText = document.createElement("div");
+boxText.style.cssText = "border: 4px solid white; background-color: #ffffff; padding:15px; margin-top: 8px; border-radius:10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; box-shadow: 1px 1px #888; text-align: center; font-size: 17px;";
+boxText.innerHTML = "Rick Paul";
+
+var myOptions = {
+content: boxText
+,disableAutoPan: false
+,maxWidth: 10
+,pixelOffset: new google.maps.Size(-200, 0)
+,zIndex: null
+,boxStyle: { 
+background: ""
+,opacity: 1
+,width: "400px"
+}
+,closeBoxMargin: "10px 2px 2px 1px"
+,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
+,infoBoxClearance: new google.maps.Size(1, 1)
+,isHidden: false
+,pane: "floatPane"
+,enableEventPropagation: false
+};
+var ib = new InfoBox(myOptions);
 
     
         google.maps.event.addListener(userMarker, 'click', function() {
         map.panTo(this.getPosition());
-        map.setZoom(11);
+        ib.open(map, this);
+        // infowindow.open(map, this);
+        map.setZoom(12);
         });
 
   
@@ -303,9 +328,9 @@ var userPos;
        
 
 
-        // infoWindow.setPosition(pos);
-        // infoWindow.setContent('location found');
-        // infoWindow.open(map);
+        infoWindow.setPosition(pos);
+        infoWindow.setContent('location found');
+        infoWindow.open(map);
         // userMarker;
         map.setCenter(pos);
       }, function() {
